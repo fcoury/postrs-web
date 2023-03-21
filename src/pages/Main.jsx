@@ -5,9 +5,9 @@ import Folder from "../components/Folder";
 import Sidebar from "../components/Sidebar";
 
 const config = {
-  issuer: process.env.REACT_APP_ISSUER,
-  clientId: process.env.REACT_APP_CLIENT_ID,
-  scopes: process.env.REACT_APP_SCOPES.split(" "),
+  issuer: import.meta.env.VITE_ISSUER,
+  clientId: import.meta.env.VITE_CLIENT_ID,
+  scopes: import.meta.env.VITE_SCOPES.split(" "),
 };
 
 export default function Main() {

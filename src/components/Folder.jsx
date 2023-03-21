@@ -1,12 +1,19 @@
+import { useAppState } from "../AppState";
 import useEmails from "../hooks/useEmails";
 import "./Folder.css";
 
 export default function Folder() {
-  const { data: emails, isLoading } = useEmails();
+  const { emails, isLoading, error } = useEmails();
+  const { state, dispatch } = useAppState();
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
+  if (error) return <div>Error: {error.message}</div>;
+
+  const handleEmailClick = (email) => {
+    dispatch({ type: "setSelectedEmail", payload: email });
+  };
 
   return (
     <div className="folder">
@@ -19,7 +26,15 @@ export default function Folder() {
       </div>
       <div className="email-list">
         {emails.map((email) => (
-          <div key={email.internal_id} className="email-list-item">
+          <div
+            key={email.internal_id}
+            onClick={() => handleEmailClick(email)}
+            className={`email-list-item${
+              state.email && state.email.internal_id === email.internal_id
+                ? " selected"
+                : ""
+            }`}
+          >
             <div className="avatar"></div>
             <div className="email-header">
               <div className="received">

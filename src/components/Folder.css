@@ -44,6 +44,11 @@ h1 {
   background-color: #f7f7f7;
 }
 
+.email-list {
+  max-height: calc(100vh);
+  overflow-y: auto;
+}
+
 .email-list-item {
   cursor: pointer;
   display: flex;
@@ -51,6 +56,10 @@ h1 {
   padding: 10px;
   position: relative;
   border-bottom: var(--section-border);
+}
+
+.email-list-item.selected {
+  background-color: #f0f0f0;
 }
 
 .email-list-item:hover {
