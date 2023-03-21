@@ -6,7 +6,7 @@
   box-sizing: border-box;
   padding: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   border-bottom: var(--section-border);
 }
@@ -16,6 +16,16 @@
 .actions .right {
   display: flex;
   align-items: center;
+}
+
+.actions .left {
+  flex: 1;
+  justify-content: flex-start;
+}
+
+.actions .right {
+  flex: 1;
+  justify-content: flex-end;
 }
 
 .actions i,
