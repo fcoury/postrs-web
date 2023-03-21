@@ -1,0 +1,35 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 60px;
+  border-right: var(--section-border);
+}
+
+.icon-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.icon-list:not(.bottom-icon) {
+  margin-top: 30px;
+}
+
+.icon-list li {
+  padding: 15px 0;
+  font-size: 18px;
+  text-align: center;
+  color: var(--icon-color);
+}
+
+.icon-list li:hover {
+  background-color: var(--icon-hover-background);
+}
+
+.icon-list li.selected {
+  background-color: var(--icon-selected-background);
+  border-left: var(--icon-selected-border);
+  color: var(--icon-selected-color);
+}
