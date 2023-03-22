@@ -5,10 +5,16 @@ const AppStateContext = createContext();
 const initialState = {
   emails: [],
   email: null,
+  loadingEmails: false,
+  loadingEmail: false,
 };
 
 function reducer(state, action) {
   switch (action.type) {
+    case "setLoadingEmails":
+      return { ...state, loadingEmails: action.payload };
+    case "setLoadingEmail":
+      return { ...state, loadingEmail: action.payload };
     case "setEmails":
       return { ...state, emails: action.payload };
     case "clearEmails":
@@ -22,6 +28,20 @@ function reducer(state, action) {
       };
     case "setSelectedEmail":
       return { ...state, email: action.payload };
+    case "setEmailBody":
+      const updatedEmails = state.emails.map((email) =>
+        email.internal_id === state.email.internal_id
+          ? { ...email, body: action.payload }
+          : email
+      );
+      return {
+        ...state,
+        email: {
+          ...state.email,
+          body: action.payload,
+        },
+        emails: updatedEmails,
+      };
     default:
       throw new Error();
   }

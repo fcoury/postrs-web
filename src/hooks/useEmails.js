@@ -1,28 +1,27 @@
+// useEmails.js
 import { useQuery } from "react-query";
-import { useAppState } from "../AppState";
+import { useAppState } from "../state/AppState";
+import { fetchData } from "./api";
 
 const useEmails = () => {
   const { state, dispatch } = useAppState();
 
-  const fetchEmails = async () => {
-    const response = await fetch(
-      "https://postrs.gistia.online/api/inbox/emails",
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    );
-    const data = await response.json();
-    return data;
-  };
-
-  const { data, isLoading, error } = useQuery("emails", fetchEmails, {
-    onSuccess: (emails) => {
-      dispatch({ type: "setEmails", payload: emails });
-    },
-  });
+  const { data, isLoading, error } = useQuery(
+    "emails",
+    () => fetchData("/inbox/emails"),
+    {
+      onFetching: () => {
+        dispatch({ type: "setLoadingEmails", payload: true });
+      },
+      onSuccess: (emails) => {
+        dispatch({ type: "setLoadingEmails", payload: false });
+        dispatch({ type: "setEmails", payload: emails });
+      },
+      onError: () => {
+        dispatch({ type: "setLoadingEmails", payload: false });
+      },
+    }
+  );
 
   return {
     emails: state.emails,

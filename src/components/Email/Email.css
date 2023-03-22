@@ -91,6 +91,8 @@
 }
 
 .details .body {
+  max-height: calc(100vh);
+  overflow-y: auto;
   margin: 20px 0;
   font-weight: 300;
   font-size: 14px;

@@ -1,6 +1,6 @@
 import "./App.css";
-import { AppStateProvider } from "./AppState";
 import Main from "./pages/Main";
+import { AppStateProvider } from "./state/AppState";
 
 function App() {
   return (

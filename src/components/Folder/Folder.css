@@ -1,5 +1,5 @@
 .folder {
-  width: 400px;
+  width: 500px;
   border-right: var(--section-border);
   box-sizing: border-box;
 }
@@ -120,7 +120,7 @@ h1 {
   font-weight: bold;
 }
 
-.body {
+.email-list-item .body {
   margin: 5px 0;
   color: var(--secondary-text-color);
   font-weight: 300;
@@ -134,7 +134,7 @@ h1 {
   text-overflow: ellipsis;
 }
 
-.body.expanded {
+.email-list-item .body.expanded {
   -webkit-line-clamp: unset;
 }
 
