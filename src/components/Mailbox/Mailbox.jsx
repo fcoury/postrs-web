@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import useEmailBody from "../../hooks/useEmailBody";
 import useEmails from "../../hooks/useEmails";
 import { useAppState } from "../../state/AppState";
+import Loading from "../Loading";
 import EmailListItem from "./EmailListItem";
 import "./Mailbox.css";
 
@@ -27,10 +28,24 @@ export default function Mailbox() {
     [dispatch, refetchEmailBody]
   );
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
   if (error) return <div>Error: {error.message}</div>;
+
+  const contents = isLoading ? (
+    <Loading />
+  ) : (
+    <div className="email-list">
+      {emails.map((email) => (
+        <EmailListItem
+          key={email.internal_id}
+          email={email}
+          selected={
+            state.email && state.email.internal_id === email.internal_id
+          }
+          onClick={() => handleEmailClick(email)}
+        />
+      ))}
+    </div>
+  );
 
   return (
     <div className="mailbox">
@@ -41,17 +56,7 @@ export default function Mailbox() {
           <input aria-label="Search" placeholder="Search" type="search" />
         </div>
       </div>
-      <div className="email-list">
-        {emails.map((email) => (
-          <EmailListItem
-            email={email}
-            selected={
-              state.email && state.email.internal_id === email.internal_id
-            }
-            onClick={() => handleEmailClick(email)}
-          />
-        ))}
-      </div>
+      {contents}
     </div>
   );
 }
