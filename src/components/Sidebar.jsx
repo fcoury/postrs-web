@@ -1,13 +1,15 @@
-import "./Sidebar.css";
+import styles from "./Sidebar.module.css";
+
+console.log("styles", styles.sidebar);
 
 export default function Sidebar() {
   return (
-    <div className="sidebar">
-      <ul className="icon-list">
+    <div className={styles.sidebar}>
+      <ul className={styles.iconList}>
         <li>
           <i className="far fa-bars"></i>
         </li>
-        <li className="selected">
+        <li className={styles.selected}>
           <i className="far fa-inbox"></i>
         </li>
         <li>
@@ -26,7 +28,7 @@ export default function Sidebar() {
           <i className="far fa-trash-alt"></i>
         </li>
       </ul>
-      <ul className="icon-list bottom-icon">
+      <ul className={`${styles.iconList} ${styles.bottomIcon}`}>
         <li>
           <i className="far fa-moon"></i>
         </li>

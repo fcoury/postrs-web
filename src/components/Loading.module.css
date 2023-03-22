@@ -1,4 +1,4 @@
-.loading-container {
+.loadingContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,7 +6,7 @@
   width: 100%;
 }
 
-.loading-container i {
+.loadingContainer i {
   font-size: 25px;
   color: #444;
 }
