@@ -3,9 +3,9 @@ import useEmailBody from "../../hooks/useEmailBody";
 import useEmails from "../../hooks/useEmails";
 import { useAppState } from "../../state/AppState";
 import EmailListItem from "./EmailListItem";
-import "./Folder.css";
+import "./Mailbox.css";
 
-export default function Folder() {
+export default function Mailbox() {
   const { emails, isLoading, error } = useEmails();
   const { state, dispatch } = useAppState();
   const { data: emailBodyData, refetch: refetchEmailBody } = useEmailBody(
@@ -33,7 +33,7 @@ export default function Folder() {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <div className="folder">
+    <div className="mailbox">
       <div className="title">
         <h1>Inbox</h1>
         <div className="search-box">

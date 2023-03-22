@@ -2,46 +2,6 @@
   width: 100%;
 }
 
-.actions {
-  box-sizing: border-box;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  border-bottom: var(--section-border);
-}
-
-.actions .left,
-.actions .middle,
-.actions .right {
-  display: flex;
-  align-items: center;
-}
-
-.actions .left {
-  flex: 1;
-  justify-content: flex-start;
-}
-
-.actions .right {
-  flex: 1;
-  justify-content: flex-end;
-}
-
-.actions i,
-.actions .page {
-  color: var(--tertiary-text-color);
-}
-
-.actions .left i,
-.actions .right i {
-  margin-right: 20px;
-}
-
-.middle .page {
-  margin: 0 10px;
-}
-
 .details {
   padding: 30px;
   display: flex;

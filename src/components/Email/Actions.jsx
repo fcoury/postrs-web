@@ -1,3 +1,5 @@
+import "./Actions.css";
+
 export default function Actions() {
   return (
     <div className="actions">

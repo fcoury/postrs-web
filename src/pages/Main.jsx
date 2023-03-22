@@ -1,7 +1,7 @@
 import { useState } from "react";
 import MicrosoftLogin from "react-microsoft-login";
 import Email from "../components/Email";
-import Folder from "../components/Folder/Folder";
+import Folder from "../components/Mailbox/Mailbox";
 import Sidebar from "../components/Sidebar";
 
 const config = {
