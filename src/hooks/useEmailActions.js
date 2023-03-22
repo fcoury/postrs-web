@@ -3,7 +3,7 @@ import { useAppState } from "../state/AppState";
 import { fetchData } from "./api";
 
 const useEmailActions = () => {
-  const { state, dispatch } = useAppState();
+  const { dispatch } = useAppState();
 
   const archiveMutation = useMutation(
     (internal_id) =>
