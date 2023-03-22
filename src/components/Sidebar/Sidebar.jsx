@@ -1,14 +1,41 @@
+import { useEffect, useState } from "react";
+import Menu from "../Menu";
 import styles from "./Sidebar.module.css";
 
-console.log("styles", styles.sidebar);
-
 export default function Sidebar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const handleOutsideClick = (event) => {
+    const menuElement = document.querySelector(`.${styles.menu}`);
+    const menuIconElement = document.querySelector(".far.fa-bars");
+
+    if (
+      menuElement &&
+      !menuElement.contains(event.target) &&
+      !menuIconElement.contains(event.target)
+    ) {
+      setMenuOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    // document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      // document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
+
   return (
     <div className={styles.sidebar}>
       <ul className={styles.iconList}>
-        <li>
+        <li onClick={toggleMenu}>
           <i className="far fa-bars"></i>
         </li>
+        {menuOpen && <Menu />}
         <li className={styles.selected}>
           <i className="far fa-inbox"></i>
         </li>

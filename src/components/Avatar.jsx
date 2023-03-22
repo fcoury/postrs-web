@@ -9,6 +9,7 @@ function Avatar({ name, email, size }) {
   useEffect(() => {
     // Function to get initials from the name
     const getInitials = (name) => {
+      if (!name) return "";
       return name
         .split(" ")
         .map((word) => word.charAt(0))
