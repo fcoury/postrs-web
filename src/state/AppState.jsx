@@ -10,6 +10,7 @@ const initialState = {
 };
 
 function reducer(state, action) {
+  console.log("reducer", action.type, action.payload);
   switch (action.type) {
     case "setLoadingEmails":
       return { ...state, loadingEmails: action.payload };
@@ -26,10 +27,17 @@ function reducer(state, action) {
           (email) => email.internal_id !== action.payload
         ),
       };
+    case "updateEmail":
+      const updatedEmails = state.emails.map((email) =>
+        email.internal_id === action.payload.internal_id
+          ? { ...email, ...action.payload.updates }
+          : email
+      );
+      return { ...state, emails: updatedEmails };
     case "setSelectedEmail":
       return { ...state, email: action.payload };
     case "setEmailBody":
-      const updatedEmails = state.emails.map((email) =>
+      const updatedEmailsForBody = state.emails.map((email) =>
         email.internal_id === state.email.internal_id
           ? { ...email, body: action.payload }
           : email
@@ -40,7 +48,7 @@ function reducer(state, action) {
           ...state.email,
           body: action.payload,
         },
-        emails: updatedEmails,
+        emails: updatedEmailsForBody,
       };
     default:
       throw new Error();

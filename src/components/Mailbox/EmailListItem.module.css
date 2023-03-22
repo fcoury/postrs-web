@@ -103,7 +103,13 @@
 }
 
 .icon {
-  margin-left: 5px;
+  padding: 5px;
   cursor: pointer;
   color: var(--tertiary-text-color);
+}
+
+.icon:hover {
+  color: var(--primary-color);
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
 }
