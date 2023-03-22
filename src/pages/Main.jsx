@@ -12,10 +12,11 @@ const config = {
 
 export default function Main() {
   const [msalInstance, onMsalInstanceChange] = useState();
-  const loggedIn = localStorage.getItem("token");
+  const loggedIn = localStorage.getItem("token") || msalInstance;
 
   const loginHandler = (err, data, msal) => {
     if (!err && data) {
+      localStorage.setItem("data", JSON.stringify(data));
       localStorage.setItem("token", data.accessToken);
       onMsalInstanceChange(msal);
     }
